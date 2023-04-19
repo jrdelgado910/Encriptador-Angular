@@ -1,0 +1,31 @@
+<div class="main1">
+    <div class="logo">
+        <img src="assets/icons/vector.png" alt="Encriptador">
+    </div>
+    <textarea type="text" class="txtTexto" [(ngModel)]="txt" (ngModelChange)="checkTextArea()" placeholder="Ingrese texto aquí"></textarea>
+    <p class="txtAdvertencia">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+            <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+        </svg>
+         Solo letras minúsculas y sin acentos
+    </p>
+    <button (click)="borrar()" *ngIf="botonVisible" class="btnborrar">Borrar</button>
+    <div class="botones">
+        <button  (click)="encriptar()" class="btnEncriptar">Encriptar</button>
+        <button (click)="desencriptar()" class="btnDesencriptar">Desencriptar</button>
+    </div>
+</div>
+<div class="main2">
+    <textarea *ngIf="msjEn==true" type="text" [(ngModel)]="txt2" class="txtEncriptado"></textarea>
+    
+    <div class="muñeco" *ngIf="imgMu==true" >
+        <img src="assets/icons/muneco.svg">
+    </div>
+    <div class="contMensaje" *ngIf="txtEn==true">
+        <p class="txtMensaje">Ningún mensaje fue encontrado</p>
+        <p class="txtMensaje2">Ingresa el texto que desees encriptar o desencriptar.</p>
+    </div>
+    <button [cdkCopyToClipboard]="txt2" *ngIf="btncopiar==true" class="btnCopiar" (click)="mensaje()">Copiar</button>
+</div>
